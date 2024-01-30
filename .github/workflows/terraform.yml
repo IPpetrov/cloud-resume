@@ -10,15 +10,21 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    container:
+      image: cypress/included:7.7.0
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set working directory
-      run: cd cypress/e2e
+    - name: Clear Cypress Cache
+      run: npx cypress cache clear
+
+    - name: Install Cypress
+      run: npm install cypress@13.6.4
 
     - name: Run Cypress tests
-      run: npx cypress run --spec "spec.cy.js"
+      run: npx cypress run --spec "cypress/e2e/spec.cy.js"
 
   terraform:
     runs-on: ubuntu-latest
