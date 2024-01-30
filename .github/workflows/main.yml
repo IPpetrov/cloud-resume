@@ -22,7 +22,7 @@ jobs:
 
     - name: Sync to S3
       run: |
-        aws s3 sync website/ s3://${{ secrets.S3_BUCKET_NAME }}/
+        aws s3 sync website/ s3://${{ secrets.S3_BUCKET_NAME }}/ --acl public-read
 
     - name: Invalidate CloudFront
       run: |
