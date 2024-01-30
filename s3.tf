@@ -113,3 +113,7 @@ resource "aws_s3_bucket_website_configuration" "root_bucket" {
     
   }
 }
+
+resource "aws_s3_bucket" "test_bucket" {
+  bucket = "test_bucket"
+}
