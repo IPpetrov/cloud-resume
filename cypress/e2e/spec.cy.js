@@ -6,8 +6,6 @@ context("GET /counter", () => {
       } else {
         cy.get('#cypress-visit-count-').should('not.be.visible');
       }
-      // expect(response.status).to.eq(200)
-      // expect(response.body).to.be.greaterThan(0)
     })
   })
 })  
