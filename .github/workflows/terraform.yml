@@ -2,8 +2,9 @@ name: Cypress Test and Terraform Apply
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'cypress/e2e/**'
+      - '**/*.tf'
 
 jobs:
   test:
@@ -13,14 +14,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install Node.js and dependencies
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14'
-    - run: npm ci
+    - name: Set working directory
+      run: cd cypress/e2e
 
     - name: Run Cypress tests
-      run: npx cypress run --spec "cypress/e2e/spec.cy.js"
+      run: npx cypress run --spec "spec.cy.js"
 
   terraform:
     runs-on: ubuntu-latest
