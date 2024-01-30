@@ -1,0 +1,29 @@
+name: Sync to AWS S3 and Invalidate CloudFront
+
+on:
+  push:
+    paths:
+      - 'website/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials
+      run: |
+        echo "[default]
+        aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        " > ~/.aws/credentials
+
+    - name: Sync to S3
+      run: |
+        aws s3 sync website/ s3://${{ secrets.S3_BUCKET_NAME }}/ --delete
+
+    - name: Invalidate CloudFront
+      run: |
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
