@@ -126,7 +126,3 @@ resource "aws_s3_bucket_website_configuration" "root_bucket" {
   }
 }
 
-# S3 test bucket to test github actions
-resource "aws_s3_bucket" "test_again_bucket" {
-  bucket = "ip-test-bucket-two"
-}
