@@ -1,3 +1,15 @@
+# S3 bucket for backend / store state
+terraform {
+  backend "s3" {
+    bucket         = "ip-petrov-tf-state"
+    key            = "terraform.tfstate"
+    region         = "eu-central-1"
+    encrypt        = true
+  }
+}
+
+
+# S3 bucket for www. website
 resource "aws_s3_bucket" "my_bucket" {
   bucket = var.www_bucket_name
 }
@@ -112,8 +124,4 @@ resource "aws_s3_bucket_website_configuration" "root_bucket" {
     }
     
   }
-}
-
-resource "aws_s3_bucket" "test_bucket" {
-  bucket = "test-bucket-final"
 }
