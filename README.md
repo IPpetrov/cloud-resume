@@ -1,6 +1,6 @@
 # cloud-resume
 
-![GitHub CI](https://github.com/IPpetrov/cloud-resume/blob/main/.github/workflows/main.yml/badge.svg)
+![Terraform](https://github.com/IPpetrov/cloud-resume/blob/main/.github/workflows/main.yml)
 
 
 ### My website link:
