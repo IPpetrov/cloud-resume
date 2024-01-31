@@ -1,7 +1,8 @@
 # cloud-resume
 
-![Terraform](https://github.com/IPpetrov/cloud-resume/blob/main/.github/workflows/main.yml)
+[![Cypress Test and Terraform Apply](https://github.com/IPpetrov/cloud-resume/actions/workflows/terraform.yml/badge.svg)](https://github.com/IPpetrov/cloud-resume/actions/workflows/terraform.yml)
 
+[![Sync to AWS S3 and Invalidate CloudFront](https://github.com/IPpetrov/cloud-resume/actions/workflows/main.yml/badge.svg)](https://github.com/IPpetrov/cloud-resume/actions/workflows/main.yml)
 
 ### My website link:
 
