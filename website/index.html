@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="styles.css">
     <title>Ivaylo Petrov - Cloud Resume</title>
 </head>
-<body class="p-3">
-  <div class="container">
+<body class="p-3 p-sm-0">
+  <div class="container mt-3">
     <div class="row gap-3">
-      <div class="left-panel p-3 col-lg-3 shadow h-100">
+      <!-- Left Panel -->
+      <div class="left-panel p-3 col-lg-3 shadow h-100 bg-white">
+        <!-- About & Info  -->
         <div class="text-center">
           <img src="portrait.jpg" alt="portrait of a man" class="img-fluid mx-auto w-100 rounded mb-3">
-
         </div>
-        <h3 class="fw-bold text-muted">Ivaylo Petrov TEST</h3>
+        <h3 class="fw-bold text-muted">Ivaylo Petrov</h3>
         <ul class="list-unstyled">
           <li class="text-muted"><i class="fa fa-house text-success"></i>Pravets, Sofia District, Bulgaria</li>
           <li class="text-muted"><i class="fa fa-envelope text-success"></i>ip_petrov@outlook.com</li>
@@ -23,8 +24,38 @@
           <li><a href="https://www.linkedin.com/in/ip-petrov/" target="_blank"><i class="fa-brands fa-linkedin text-success"></i>LinkedIn</a></li>
           <li><a href="https://github.com/IPpetrov/" target="_blank"><i class="fa-brands fa-github text-success"></i>GitHub</a></li>
         </ul>
+        <!-- /About & Info -->
         <hr>
-        <h5 class="text-muted"><i class="fa fa-star-of-life text-success"></i>Skills</h5>
+        <!-- Education -->
+        <h5 class="text-muted fw-bold"><i class="fa fa-book-open text-success"></i>Education</h5>
+        <ul class="list-unstyled">
+          <li>Sofia University "St. Kliment Ohridski"</li>
+          <li class="text-success mt-1"><i class="fa-regular fa-calendar"></i>2019 - 2020</li>
+          <li class="text-muted"><span class="fw-bold">Master's degree</span> in <span class="fst-italic">"Management of outsourcing projects and companies"</span></li>
+          <br>
+          <li>Technical University of Sofia</li>
+          <li class="text-success mt-1"><i class="fa-regular fa-calendar"></i>2015 - 2019</li>
+          <li class="text-muted"><span class="fw-bold">Bachelor's degree</span> in <span class="fst-italic">"Telecommuncation engineering"</span></li>
+          <br>
+          <li>Vocational School of Computer Technology</li>
+          <li class="text-success mt-1"><i class="fa-regular fa-calendar"></i>2010 - 2015</li>
+          <li class="text-muted"><span class="fw-bold">High School</span></li>
+        </ul>
+        <!-- /Education -->
+        <hr>
+        <!-- Certifications -->
+        <h5 class="text-muted fw-bold"><i class="fa fa-certificate text-success"></i>Certifications</h5>
+        <ul class="list-unstyled">
+          <li><span class="text-success">PRINCE2 Foundation</span> by <span class="fst-italic">PeopleCert</span></li>
+          <li><span class="text-success">ITIL v4 Foundation</span> by <span class="fst-italic">PeopleCert</span></li>
+          <li><span class="text-success">Six Sigma Yellow Belt</span> by <span class="fst-italic">6sigmastudy</span></li>
+          <li><span class="text-success">Microsoft Office Specialist</span> by <span class="fst-italic">Microsoft</span></li>
+          <li><span class="text-success">New Managers Programme</span> by <span class="fst-italic">PwC Bulgaria</span></li>
+        </ul>
+        <!-- /Certifications -->
+        <hr>
+        <!-- Skills -->
+        <h5 class="text-muted fw-bold"><i class="fa fa-star-of-life text-success"></i>Skills</h5>
         <p class="text-muted">
           Jira <span class="text-success">•</span> 
           TFS <span class="text-success">•</span> 
@@ -44,30 +75,100 @@
           Python <span class="text-success">•</span> 
           Terraform with AWS
         </p>
+        <!-- /Skills -->
         <hr>
-        <h5 class="text-muted"><i class="fa fa-earth text-success"></i>Languages</h5>
+        <!-- Languages -->
+        <h5 class="text-muted fw-bold"><i class="fa fa-earth text-success"></i>Languages</h5>
         <ul class="list-unstyled">
           <li class="text-muted">Bulgarian - Native</li>
           <li class="text-muted">English - Proficient</li>
         </ul>
+        <!-- /Languages -->
       </div>
+      <!-- /Left Panel -->
+      <!-- Right Panel -->
       <div class="right-panel p-0 col">
-        <div class="education shadow p-3 mb-3">
-          <h3><i class="fa fa-book-open text-success"></i><span class="text-muted"> Education</span></h3>
+        <!-- Projects -->
+        <div class="projects shadow p-3 mb-3 bg-white">
+          <!-- Cloud Resume -->
+          <h3><i class="fa fa-code text-success"></i><span class="text-muted fw-bold"> Projects</span></h3>
+          <hr>
           <div class="mx-3">
             <ul class="list-unstyled">
-              <li class="fw-bold text-muted">Sofia University "St. Kliment Ohridski"</li>
-              <li class="text-success mt-1"><i class="fa-regular fa-calendar"></i>2019 - 2020</li>
-              <li>Master's degree in <span class="fst-italic">Management of outsourcing projects and companies</span></li>
-              <br>
-              <li class="fw-bold text-muted">Technical University of Sofia</li>
-              <li class="text-success mt-1"><i class="fa-regular fa-calendar"></i>2015 - 2019</li>
-              <li>Bachelor's degree in <span class="fst-italic">Telecommuncation engineering</span></li>
+              <h5 class="text-success"><a href="https://www.ip-petrov.com" target="_blank" class="text-decoration-none">Cloud Resume</a></h5>
+              <li class="text-muted fst-italic">
+                Technologies used: AWS S3, Route53, Certificates Manager, 
+                CloudFront, API Gateway, Lambda, DynamoDB, Terraform git, Github, Github Actions, Python (Boto3), 
+                HTML, CSS, JavaScript.
+              </li>
             </ul>
+            <p class="lh-1">What was achieved during the challenge:</p>
+            <ul>
+              <li>
+                Implemented Terraform scripts for streamlined creation of AWS infrastructure, 
+                reducing manual configuration.
+              </li>
+              <li>Customized HTML layout utilizing CSS with Bootstrap.</li>
+              <li>Hosted HTML resume on Amazon S3 as a static website for efficient deployment.</li>
+              <li>Ensured website security by implementing HTTPS and integrating with Amazon CloudFront.</li>
+              <li>Established custom domain mapping to CloudFront distribution for personalized URL.</li>
+              <li>
+                Implemented a redirect setup utilizing an additional S3 bucket and routing configurations,  
+                allowing seamless redirection from ip-petrov.com to the www version, enhancing user experience 
+                and ensuring consistent access to the website.
+              </li>
+              <li>Developed a visitor tracking feature using JavaScript and DynamoDB for data storage.</li>
+              <li>Constructed an API through AWS API Gateway and Lambda services for dynamic content delivery.</li>
+              <li>Utilized Python Boto3 and Lambda functions to automate DynamoDB operations via API Gateway.</li>
+              <li>Managed backend and frontend code in a dedicated GitHub repository for version control.</li>
+              <li>
+                Integrated Cypress Test into GitHub actions for continuous testing of both API and website 
+                functionality.
+              </li>
+              <li>
+                Implemented CI/CD pipelines with GitHub actions for automated deployment of backend and frontend 
+                resources using Terraform.
+              </li>
+            </ul>
+            <p><small>GitHub Repository: <a href="https://github.com/IPpetrov/cloud-resume/" target="_blank">https://github.com/IPpetrov/cloud-resume/</a></small></p>
+            <!-- /Cloud Resume -->
+            <hr>
+            <!-- Elinor -->
+            <h5><a href="https://ippetrov.github.io/elinor_design_studio/" target="_blank" class="text-decoration-none">Elinor Design Studio</a></h5>
+            <p class="text-muted fst-italic">Technologies used: HTML, CSS, JavaScript.</p>
+            <p>Single page made by following a design.</p>
+            <p><small>GitHub Repository: <a href="https://github.com/IPpetrov/elinor_design_studio/" target="_blank">https://github.com/IPpetrov/elinor_design_studio/</a></small></p>
+            <!-- /Elinor -->
+            <hr>
+            <!-- Product Page -->
+            <h5><a href="https://ippetrov.github.io/product-listing-page/" target="_blank" class="text-decoration-none">Product Listing Page</a></h5>
+            <p class="text-muted fst-italic">Technologies used: HTML, CSS, JavaScript.</p>
+            <p>Basic Product Listing Page, resembling a typical page in an ecommerce store. Main reason for creation was using JSON to 
+              store and show product data, while having the ability to use multiple filters to go through the data,
+              thus the not so great design.</p>
+            <p><small>GitHub Repository: <a href="https://github.com/IPpetrov/product-listing-page/" target="_blank">https://github.com/IPpetrov/product-listing-page/</a></small></p>
+            <!-- /Product Page -->
+            <hr>
+            <!-- Tic Tac Toe -->
+            <h5><a href="https://ippetrov.github.io/tic-tac-toe/" target="_blank" class="text-decoration-none">Tic-Tac-Toe</a></h5>
+            <p class="text-muted fst-italic">Technologies used: HTML, CSS, JavaScript.</p>
+            <p>Simple Tic-Tac-Toe game.</p>
+            <p><small>GitHub Repository: <a href="https://github.com/IPpetrov/tic-tac-toe/" target="_blank">https://github.com/IPpetrov/tic-tac-toe/</a></small></p>
+            <!-- /Tic Tac Toe -->
+            <hr>
+            <!-- Calculator -->
+            <h5><a href="https://ippetrov.github.io/odin_calculator/" target="_blank" class="text-decoration-none">Calculator</a></h5>
+            <p class="text-muted fst-italic">Technologies used: HTML, CSS, JavaScript.</p>
+            <p>Simple Windows like Calculator.</p>
+            <p><small>GitHub Repository: <a href="https://github.com/IPpetrov/odin_calculator/" target="_blank">https://github.com/IPpetrov/odin_calculator/</a></small></p>
+            <!-- /Calculator -->
           </div>
         </div>
-        <div class="experience shadow p-3">
-          <h3><i class="fa fa-briefcase text-success"></i><span class="text-muted"> Work Experience</span></h3>
+        <!-- /Projects -->
+        <!-- Experience -->
+        <div class="experience shadow p-3 bg-white">
+          <h3><i class="fa fa-briefcase text-success"></i><span class="text-muted fw-bold"> Work Experience</span></h3>
+          <hr>
           <div class="mx-3">
             <ul class="list-unstyled">
               <li class="fw-bold text-muted">IT Project Manager @ Pronet Gaming</li>
@@ -99,11 +200,81 @@
               <li>Conduct regular project reviews and evaluations to identify areas for
               improvement and implement corrective actions as needed</li>
             </ul>
+            <ul class="list-unstyled">
+              <li class="fw-bold text-muted">Senior Project Manager @ UniCredit Bulbank</li>
+              <li class="text-success mt-1"><i class="fa-regular fa-calendar"></i>Apr 2023 - Oct 2023</li>
+            </ul>
+            <ul>
+              <li>Oversee and manage complex projects within the bank, ensuring adherence to timelines, budgets, and
+              quality standards.</li>
+              <li>Develop project plans, defining goals, objectives, deliverables, and resource requirements.</li>
+              <li>Coordinate with cross-functional teams, stakeholders, and external vendors to drive project execution and
+              achieve desired outcomes.</li>
+              <li>Conduct thorough project risk assessments, identify potential obstacles, and develop mitigation strategies
+              to ensure successful project delivery.</li>
+              <li>Monitor project progress, track milestones, and provide regular status updates to senior management and
+              key stakeholders.</li>
+              <li>Lead and motivate project teams, promoting collaboration, communication, and a positive work
+              environment.</li>
+              <li>Identify and resolve project-related issues, conflicts, and dependencies in a timely manner.</li>
+              <li>Implement project management best practices, methodologies, and tools to optimize project outcomes
+              and improve efficiency.</li>
+              <li>Foster a culture of continuous improvement, encouraging innovative ideas and driving process
+              enhancements.</li>
+              <li>Prepare comprehensive project documentation, including project plans, progress reports, and post-project
+              evaluations.</li>
+              <li>Stay updated on industry trends, regulatory requirements, and technological advancements relevant to
+              the banking sector.</li>
+            </ul>
+            <ul class="list-unstyled">
+              <li class="fw-bold text-muted">Project Manager @ CXG Ltd</li>
+              <li class="text-success mt-1"><i class="fa-regular fa-calendar"></i>Aug 2019 - Apr 2023</li>
+            </ul>
+            <ul>
+              <li>Facilitated communication across departments, planned and led all-hands meetings to ensure teams are as
+              engaged into projects and are mindful of the overall company vision.</li>
+              <li>Participated in 100+ interviews, created schedules, onboarding and offboarding employees, virtual coffee
+              meetings, appraisals, 1:1s, managed multiple teams.</li>
+              <li>Participated and led project kick-off meetings, created/amended MSAs, SOWs as per clients'
+              needs and company's vision, provided daily/weekly/monthly reports and forecasts, led and
+              losed projects from end-to-end, managed costs and monitored performance.</li>
+              <li>Served as SPOC and managed the client relationships to build long-term partnership and
+              growth, which occupied more than 20% of the company revenue</li>
+            </ul>
+            <ul class="list-unstyled">
+              <li class="fw-bold text-muted">Coordinator @ CXG Ltd</li>
+              <li class="text-success mt-1"><i class="fa-regular fa-calendar"></i>Jun 2018 - Aug 2019</li>
+            </ul>
+            <ul>
+              <li>Managed daily operations of 11 employees, including scheduling and performance reviews.</li>
+              <li>Created automated workflows to assist in monitoring teams' performance, resolved escalated customer
+              concerns.</li>
+              <li>Led weekly training classes, conflict resolution in both individual and team settings.</li>
+            </ul>
+            <ul class="list-unstyled">
+              <li class="fw-bold text-muted">Data Entry Operator @ CXG Ltd</li>
+              <li class="text-success mt-1"><i class="fa-regular fa-calendar"></i>Nov 2017 - Jun 2018</li>
+            </ul>
+            <ul>
+              <li>Processed over 100 invoices daily in variety of languages (English, German, Italian, Spanish and more),
+              maintaining more than 95% accuracy which helped to reach the team's expected quality goals.</li>
+              <li>Mentored newer team members, created a process on “best practices” to help the flow of work.</li>
+              <li>Supported upper-management in other ad-hoc projects.</li>
+            </ul>
           </div>
         </div>
+        <!-- /Experience -->
       </div>
+      <!-- /Right Panel -->
     </div>
   </div>
+  <div class="container-fluid footer p-3 mt-3">
+    <footer class="text-center text-muted">
+      <h6>Thank you for visiting!</h6>
+      <p id="cypress-visit-count"><small>Visitor Count: <span id="visitorCount">Loading...</span> (non-unique visitors)</small></p>
+    </footer>
+  </div>
+  
   <script src="script.js"></script>
   <script src="https://kit.fontawesome.com/73f78c45f2.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
