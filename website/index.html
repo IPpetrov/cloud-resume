@@ -7,310 +7,104 @@
     <link rel="stylesheet" href="styles.css">
     <title>Ivaylo Petrov - Cloud Resume</title>
 </head>
-<body class="bg-light container-fluid">
-    <div class="container" data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy p-3 rounded-2" tabindex="0">
-      <!-- Header/Menu  -->
-      <div class="container sticky-top">
-        <nav id="navbar" class="navbar bg-white px-3 mb-3 container shadow rounded-bottom-3">
-          <a class="navbar-brand" href="#">IP-Petrov</a>
-          <ul class="nav nav-pills">
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#skills">Skills</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#certifications">Certifications</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#education">Education</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#experience">Experience</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Projects</a>
-            </li>
-          </ul>
-        </nav>   
-      </div>
-      <!-- /Header/Menu  -->
-      <!-- About card -->
-      <div class="container" id="about">
-        <div class="bg-white row">
-          <div class="about-left text-center col-sm-12 col-md-6">
-            <img src="photo.jpg" alt="" class="rounded-circle">
-            <div class="">
-              <a href="https://github.com/IPpetrov/" target="_blank" class="text-muted"><i class="fa-brands fa-linkedin fa-xl"></i></a>
-              <a href="https://www.linkedin.com/in/ip-petrov/" target="_blank" class="text-muted"><i class="fa-brands fa-github fa-xl"></i></a>
-            </div>
-          </div>
-          <div class="about-right text-center col-sm-12 col-md-6">
-            <h1>Ivaylo Petrov</h1>
-            <h6 class="text-muted fw-semibold">IT PROJECT MANAGER & IT ENTHUSIAST</h6>
-            <a href="https://drive.google.com/uc?export=download&id=18KcGSHQ_elhbWegsOPsU4xPlJPwug9al" download="IvayloPetrov_CV.pdf">
-              <button class="btn btn-primary">Download CV</button>
-            </a>
-            <div class="row">
-              <ul class="list-unstyled col-1">
-                <li><span class="fw-bold">Location: </span></li>
-                <li><span class="fw-bold">Email: </span></li>
-                <li><span class="fw-bold">Phone: </span></li>
-              </ul>
-              <ul class="list-unstyled col-2">
-                <li>Pravets, Sofiya, Bulgaria</li>
-                <li>ip_petrov@outlook.com</li>
-                <li>+359 895 67 49 79</li>
-              </ul>
-            </div>
-          </div>
+<body class="p-3">
+  <div class="container">
+    <div class="row gap-3">
+      <div class="left-panel p-3 col-lg-3 shadow h-100">
+        <div class="text-center">
+          <img src="portrait.jpg" alt="portrait of a man" class="img-fluid mx-auto w-100 rounded mb-3">
+
         </div>
-      </div>        
-      <!-- /About card -->
-      <!-- Skills -->
-      <div class="container" id="skills">
-      <div class="row">
-        <div class="skills-left">
-          <h5>Technical Skills</h5>
-          <div class="bg-white">
-              <ul class="list-unstyled">
-                  <li>MS Office</li>
-                  <li>Slack</li>
-                  <li>Jira / Confluence / TFS</li>
-                  <li>General knowledge in IT - programming/scripting, hardware and troubleshooting</li>
-                  <li>Beginner to Mid knowledge in: HTML, CSS, JavaScript, Python, Terraform and GitHub</li>
-              </ul>
-          </div>
-        </div>  
-        <div class="skills-right">
-          <h5>Soft Skills</h5>
-          <div class="bg-white">
-              <ul class="list-unstyled">
-                  <li>Project management</li>
-                  <li>Effective communication</li>
-                  <li>Fast learner</li>
-                  <li>Creative thinker</li>
-                  <li>Troubleshooting</li>
-              </ul>
-          </div>
-        </div>
-      </div>
-      </div>
-      <!-- /Skills -->
-      <!-- Certifications -->
-      <div class="container" id="certifications">
-      <h5>Certifications</h5>
-      <div class="bg-white">
+        <h3 class="fw-bold text-muted">Ivaylo Petrov</h3>
         <ul class="list-unstyled">
-            <li><span class="fw-bold">PRINCE2 Foundations</span>, <span class="fst-italic ">PeopleCert</span></li>
-            <li><span class="fw-bold">ITIL v4 Foundations</span>, <span class="fst-italic ">PeopleCert</span></li>
-            <li><span class="fw-bold">Microsoft Office Specialist</span>, <span class="fst-italic ">Microsoft</span></li>
-            <li><span class="fw-bold">New Managers Programme</span>, <span class="fst-italic ">PwC Bulgaria</span></li>
+          <li class="text-muted"><i class="fa fa-house text-success"></i>Pravets, Sofia District, Bulgaria</li>
+          <li class="text-muted"><i class="fa fa-envelope text-success"></i>ip_petrov@outlook.com</li>
+          <li class="text-muted"><i class="fa fa-phone text-success"></i>+359 895 67 49 79</li>
+          <li><a href="https://www.linkedin.com/in/ip-petrov/" target="_blank"><i class="fa-brands fa-linkedin text-success"></i>LinkedIn</a></li>
+          <li><a href="https://github.com/IPpetrov/" target="_blank"><i class="fa-brands fa-github text-success"></i>GitHub</a></li>
+        </ul>
+        <hr>
+        <h5 class="text-muted"><i class="fa fa-star-of-life text-success"></i>Skills</h5>
+        <p class="text-muted">
+          Jira <span class="text-success">•</span> 
+          TFS <span class="text-success">•</span> 
+          Confluence <span class="text-success">•</span> 
+          MS Office <span class="text-success">•</span> 
+          Slack <span class="text-success">•</span> 
+          Project Management <span class="text-success">•</span> 
+          Stress Management <span class="text-success">•</span> 
+          Adaptable <span class="text-success">•</span> 
+          Effective Communication <span class="text-success">•</span> 
+          Creativity <span class="text-success">•</span> 
+          Troubleshooter <span class="text-success">•</span> 
+          Computer Hardware <span class="text-success">•</span> 
+          Fast learner <span class="text-success">•</span> 
+          HTML / CSS <span class="text-success">•</span> 
+          JavaScript <span class="text-success">•</span> 
+          Python <span class="text-success">•</span> 
+          Terraform with AWS
+        </p>
+        <hr>
+        <h5 class="text-muted"><i class="fa fa-earth text-success"></i>Languages</h5>
+        <ul class="list-unstyled">
+          <li class="text-muted">Bulgarian - Native</li>
+          <li class="text-muted">English - Proficient</li>
         </ul>
       </div>
+      <div class="right-panel p-0 col">
+        <div class="education shadow p-3 mb-3">
+          <h3><i class="fa fa-book-open text-success"></i><span class="text-muted"> Education</span></h3>
+          <div class="mx-3">
+            <ul class="list-unstyled">
+              <li class="fw-bold text-muted">Sofia University "St. Kliment Ohridski"</li>
+              <li class="text-success mt-1"><i class="fa-regular fa-calendar"></i>2019 - 2020</li>
+              <li>Master's degree in <span class="fst-italic">Management of outsourcing projects and companies</span></li>
+              <br>
+              <li class="fw-bold text-muted">Technical University of Sofia</li>
+              <li class="text-success mt-1"><i class="fa-regular fa-calendar"></i>2015 - 2019</li>
+              <li>Bachelor's degree in <span class="fst-italic">Telecommuncation engineering</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="experience shadow p-3">
+          <h3><i class="fa fa-briefcase text-success"></i><span class="text-muted"> Work Experience</span></h3>
+          <div class="mx-3">
+            <ul class="list-unstyled">
+              <li class="fw-bold text-muted">IT Project Manager @ Pronet Gaming</li>
+              <li class="text-success mt-1"><i class="fa-regular fa-calendar"></i>Oct 2023 - <span class="bg-success text-white p-1 rounded-2 ">Present</span></li>
+            </ul>
+            <ul>
+              <li>Lead and oversee end-to-end project management activities for Data
+              Warehouse, Data Science, and Third-Party Odd Provider domains.</li>
+              <li>Develop and maintain comprehensive project plans, ensuring alignment
+              with organizational goals and timelines.</li>
+              <li>Establish and maintain effective communication channels to provide
+              regular project updates to stakeholders, ensuring transparency and
+              managing expectations.</li>
+              <li>Monitor project progress and resource allocation, identifying and
+              resolving potential bottlenecks or issues that may impact timelines.</li>
+              <li>Facilitate team meetings, ensuring effective collaboration, problem-
+              solving, and decision-making.</li>
+              <li>Implement and adhere to project management best practices and
+              methodologies to ensure consistency and quality in project delivery.</li>
+              <li>Foster a culture of continuous improvement, regularly reviewing and
+              optimizing project management processes and workflows.</li>
+              <li>Collaborate with the IT leadership team to align project priorities with
+              overall business strategy and objectives.</li>
+              <li>Foster a collaborative and positive team culture, promoting knowledge
+              sharing and professional development among team members.</li>
+              <li>Act as a liaison between technical and non-technical stakeholders,
+              translating technical concepts into understandable terms for various
+              audiences.</li>
+              <li>Conduct regular project reviews and evaluations to identify areas for
+              improvement and implement corrective actions as needed</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <!-- /Certifications -->
-      <!-- Education -->
-      <div class="container" id="education">
-    <h5>Education</h5>
-    <div class="bg-white">
-      <ul class="list-unstyled">
-        <li>Master's degree, Sofia University "St. Kliment Ohridski"</li>
-        <li><span class="fst-italic">Management of outsourcing projects and companies</span></li>
-        <li><span class="text-muted">2019 - 2020</span></li>
-        <li>Bachelor's degree, Technical University of Sofia</li>
-        <li><span class="fst-italic">Telecommuncation engineering</span></li>
-        <li><span class="text-muted">2015 - 2019</span></li>
-      </ul>
     </div>
-      </div> 
-      <!-- /Education -->
-      <!-- Experience -->
-      <div class="container" id="experience">
-    <h5>Experience</h5>
-    <div class="bg-white">
-      <ul class="list-unstyled">
-        <li>IT Project Manager at <span class="fw-bold">Pronet Gaming</span></li>
-        <li class="text-muted fst-italic">Oct 2023 - Present</li>
-      </ul>
-      <ul>
-        <li>Lead and oversee end-to-end project management activities for Data
-        Warehouse, Data Science, and Third-Party Odd Provider domains.</li>
-        <li>Develop and maintain comprehensive project plans, ensuring alignment
-        with organizational goals and timelines.</li>
-        <li>Establish and maintain effective communication channels to provide
-        regular project updates to stakeholders, ensuring transparency and
-        managing expectations.</li>
-        <li>Monitor project progress and resource allocation, identifying and
-        resolving potential bottlenecks or issues that may impact timelines.</li>
-        <li>Facilitate team meetings, ensuring effective collaboration, problem-
-        solving, and decision-making.</li>
-        <li>Implement and adhere to project management best practices and
-        methodologies to ensure consistency and quality in project delivery.</li>
-        <li>Foster a culture of continuous improvement, regularly reviewing and
-        optimizing project management processes and workflows.</li>
-        <li>Collaborate with the IT leadership team to align project priorities with
-        overall business strategy and objectives.</li>
-        <li>Foster a collaborative and positive team culture, promoting knowledge
-        sharing and professional development among team members.</li>
-        <li>Act as a liaison between technical and non-technical stakeholders,
-        translating technical concepts into understandable terms for various
-        audiences.</li>
-        <li>Conduct regular project reviews and evaluations to identify areas for
-        improvement and implement corrective actions as needed</li>
-      </ul>
-      <ul class="list-unstyled">
-        <li>Senior Project Manager at <span class="fw-bold">UniCredit Bulbank</span></li>
-        <li class="text-muted fst-italic">Apr 2023 - Oct 2023</li>
-      </ul>
-      <ul>
-        <li>Oversee and manage complex projects within the bank, ensuring adherence to timelines, budgets, and
-        quality standards.</li>
-        <li>Develop project plans, defining goals, objectives, deliverables, and resource requirements.</li>
-        <li>Coordinate with cross-functional teams, stakeholders, and external vendors to drive project execution and
-        achieve desired outcomes.</li>
-        <li>Conduct thorough project risk assessments, identify potential obstacles, and develop mitigation strategies
-        to ensure successful project delivery.</li>
-        <li>Monitor project progress, track milestones, and provide regular status updates to senior management and
-        key stakeholders.</li>
-        <li>Lead and motivate project teams, promoting collaboration, communication, and a positive work
-        environment.</li>
-        <li>Identify and resolve project-related issues, conflicts, and dependencies in a timely manner.</li>
-        <li>Implement project management best practices, methodologies, and tools to optimize project outcomes
-        and improve efficiency.</li>
-        <li>Foster a culture of continuous improvement, encouraging innovative ideas and driving process
-        enhancements.</li>
-        <li>Prepare comprehensive project documentation, including project plans, progress reports, and post-project
-        evaluations.</li>
-        <li>Stay updated on industry trends, regulatory requirements, and technological advancements relevant to
-        the banking sector.</li>
-      </ul>
-      <ul class="list-unstyled">
-        <li>Project Manager at <span class="fw-bold">CXG Ltd.</span></li>
-        <li class="text-muted fst-italic">Aug 2019 - Apr 2023</li>
-      </ul>
-      <ul>
-        <li>Facilitated communication across departments, planned and led all-hands meetings to ensure teams are as
-        engaged into projects and are mindful of the overall company vision.</li>
-        <li>Participated in 100+ interviews, created schedules, onboarding and offboarding employees, virtual coffee
-        meetings, appraisals, 1:1s, managed multiple teams.</li>
-        <li>Participated and led project kick-off meetings, created/amended MSAs, SOWs as per clients'
-        needs and company's vision, provided daily/weekly/monthly reports and forecasts, led and
-        losed projects from end-to-end, managed costs and monitored performance.</li>
-        <li>Served as SPOC and managed the client relationships to build long-term partnership and
-        growth, which occupied more than 20% of the company revenue</li>
-      </ul>
-      <ul class="list-unstyled">
-        <li>Coordinator at <span class="fw-bold">CXG Ltd.</span></li>
-        <li class="text-muted fst-italic">Jun 2018 - Aug 2019</li>
-      </ul>
-      <ul>
-        <li>Managed daily operations of 11 employees, including scheduling and performance reviews.</li>
-        <li>Created automated workflows to assist in monitoring teams' performance, resolved escalated customer
-        concerns.</li>
-        <li>Led weekly training classes, conflict resolution in both individual and team settings.</li>
-      </ul>
-      <ul class="list-unstyled">
-        <li>Data Entry Operator at <span class="fw-bold">CXG Ltd.</span></li>
-        <li class="text-muted fst-italic">Nov 2017 - Jun 2018</li>
-      </ul>
-      <ul>
-        <li>Processed over 100 invoices daily in variety of languages (English, German, Italian, Spanish and more),
-        maintaining more than 95% accuracy which helped to reach the team's expected quality goals.</li>
-        <li>Mentored newer team members, created a process on “best practices” to help the flow of work.</li>
-        <li>Supported upper-management in other ad-hoc projects.</li>
-      </ul>
-    </div>
-      </div>
-      <!-- /Experience -->
-      <!-- Projects -->
-      <div class="container" id="projects">
-    <h5>Projects</h5>
-    <div class="bg-white">
-      <ul class="list-unstyled">
-        <li><a href="https://www.ip-petrov.com" target="_blank">Cloud Resume</a></li>
-        <li class="text-muted fst-italic">
-          Technologies used: AWS S3, Route53, Certificates Manager, 
-          CloudFront, API Gateway, Lambda, DynamoDB, Terraform git, Github, Github Actions, Python (Boto3), 
-          HTML, CSS, JavaScript.
-        </li>
-      </ul>
-      <ul>
-        <li>
-          Implemented Terraform scripts for streamlined creation of AWS infrastructure, 
-          reducing manual configuration.
-        </li>
-        <li>Customized HTML layout utilizing CSS with Bootstrap.</li>
-        <li>Hosted HTML resume on Amazon S3 as a static website for efficient deployment.</li>
-        <li>Ensured website security by implementing HTTPS and integrating with Amazon CloudFront.</li>
-        <li>Established custom domain mapping to CloudFront distribution for personalized URL.</li>
-        <li>
-          Implemented a redirect setup utilizing an additional S3 bucket and routing configurations,  
-          allowing seamless redirection from ip-petrov.com to the www version, enhancing user experience 
-          and ensuring consistent access to the website.
-        </li>
-        <li>Developed a visitor tracking feature using JavaScript and DynamoDB for data storage.</li>
-        <li>Constructed an API through AWS API Gateway and Lambda services for dynamic content delivery.</li>
-        <li>Utilized Python Boto3 and Lambda functions to automate DynamoDB operations via API Gateway.</li>
-        <li>Managed backend and frontend code in a dedicated GitHub repository for version control.</li>
-        <li>
-          Integrated Cypress Test into GitHub actions for continuous testing of both API and website 
-          functionality.
-        </li>
-        <li>
-          Implemented CI/CD pipelines with GitHub actions for automated deployment of backend and frontend 
-          resources using Terraform.
-        </li>
-      </ul>
-      <p>GitHub Repository: <a href="https://github.com/IPpetrov/cloud-resume/" target="_blank">https://github.com/IPpetrov/cloud-resume/</a></p>
-    </div>
-    <div class="bg-white">
-      <ul class="list-unstyled">
-        <li><a href="https://ippetrov.github.io/elinor_design_studio/" target="_blank">Elinor Design Studio</a></li>
-        <li class="text-muted fst-italic">
-          Technologies used: HTML, CSS, JavaScript.
-        </li>
-        <p>Single page made according to a design.</p>
-        <p>GitHub Repository: <a href="https://github.com/IPpetrov/elinor_design_studio/" target="_blank">https://github.com/IPpetrov/elinor_design_studio/</a></p>
-    </div>
-    <div class="bg-white">
-      <ul class="list-unstyled">
-        <li><a href="https://ippetrov.github.io/product-listing-page/" target="_blank">Product Listing Page</a></li>
-        <li class="text-muted fst-italic">
-          Technologies used: HTML, CSS, JavaScript.
-        </li>
-        <p>Basic Product Listing Page, resembling a typical page in an ecommerce store. Main reason for creation was using JSON to 
-          store and show product data, while having the ability to use multiple filters to go through the data,
-          thus the not so great design.</p>
-        <p>GitHub Repository: <a href="https://github.com/IPpetrov/product-listing-page/" target="_blank">https://github.com/IPpetrov/product-listing-page/</a></p>
-    </div>
-    <div class="bg-white">
-      <ul class="list-unstyled">
-        <li><a href="https://ippetrov.github.io/tic-tac-toe/" target="_blank">Tic-Tac-Toe Game</a></li>
-        <li class="text-muted fst-italic">
-          Technologies used: HTML, CSS, JavaScript.
-        </li>
-        <p>Simple Tic-Tac-Toe game.</p>
-        <p>GitHub Repository: <a href="https://github.com/IPpetrov/tic-tac-toe/" target="_blank">https://github.com/IPpetrov/tic-tac-toe/</a></p>
-    </div>
-    <div class="bg-white">
-      <ul class="list-unstyled">
-        <li><a href="https://ippetrov.github.io/odin_calculator/" target="_blank">Calculator</a></li>
-        <li class="text-muted fst-italic">
-          Technologies used: HTML, CSS, JavaScript.
-        </li>
-        <p>Simple Windows like Calculator.</p>
-        <p>GitHub Repository: <a href="https://github.com/IPpetrov/odin_calculator/" target="_blank">https://github.com/IPpetrov/odin_calculator/</a></p>
-    </div>
-      </div> 
-      <!-- /Projects -->
-      <footer class="container">
-    <h5>Thank you for visiting!</h5>
-    <p id="cypress-visit-count">Visitor Count: <span id="visitorCount">Loading...</span> (non-unique visitors)</p>
-      </footer>
-    </div>
-    <script src="script.js"></script>
+  </div>
+  <script src="script.js"></script>
   <script src="https://kit.fontawesome.com/73f78c45f2.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
