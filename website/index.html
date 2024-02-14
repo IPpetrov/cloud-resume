@@ -263,6 +263,22 @@
           </div>
         </div>
         <!-- /Experience -->
+        <!-- Contact -->
+        <div class="contact shadow p-3 mt-3 bg-white">
+          <h3><i class="fa fa-paper-plane text-success"></i><span class="text-muted fw-bold"> Contact Me</span></h3>
+          <hr>
+          <form id="contact-form" method="post">
+            <h5>Name:</h5>
+            <input type="text" id="name-input" placeholder="Enter name here…" class="form-control w-100"/><br/>
+            <h5>Email:</h5>
+            <input type="email" id="email-input" placeholder="Enter email here…" class="form-control w-100"/><br/>
+            <h5>Message:</h5>
+            <textarea id="description-input" rows="3" placeholder="Enter your message…" class="form-control w-100"></textarea><br/>
+            <div class="g-recaptcha" data-sitekey="6Lc7cVMUAAAAAM1yxf64wrmO8gvi8A1oQ_ead1ys" class="form-control w-100"></div>
+            <button type="button" onClick="submitToAPI(event)" class="btn btn btn-success w-100">Submit</button>
+          </form>
+        </div>
+        <!-- /Contact -->
       </div>
       <!-- /Right Panel -->
     </div>
