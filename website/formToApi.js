@@ -3,7 +3,7 @@ function formToApi(event) {
     event.preventDefault()
 
     var data = {
-        destinationEmail: document.getElementsByName('email')[0].value,
+        email: document.getElementsByName('email')[0].value,
         message: document.getElementsByName('message')[0].value
     }
 
