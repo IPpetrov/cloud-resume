@@ -271,13 +271,13 @@
           <hr>
           <form name="contactForm" onsubmit="formToApi(event)">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control mb-2" id="name" name="name" placeholder="Your name" required>
+            <input type="text" class="form-control mb-2" id="name" name="name" placeholder="John Doe" required>
             <span class="name-error mb-2"></span>
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control mb-2" placeholder="Email address" id="email" name="email" required>
+            <input type="email" class="form-control mb-2" placeholder="john.doe@domain.com" id="email" name="email" required>
             <span class="email-error mb-2"></span>
             <label for="message" class="form-label">Message</label>
-            <textarea placeholder="Your message" class="form-control mb-3" name="message" id="message" required></textarea>
+            <textarea type="text" class="form-control mb-3" placeholder="Hi there.." name="message" id="message" required></textarea>
             <span class="message-error mb-2"></span>
             <button type="submit" class="btn btn-success mb-2" value="Submit">Submit</button>
             <p class="text-success" id="hiddenMessage"></p>
