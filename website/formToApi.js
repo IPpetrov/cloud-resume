@@ -1,4 +1,5 @@
 function formToApi(event) {
+    var hiddenMessage = document.getElementById("hiddenMessage");
     event.preventDefault()
     var data = {
         email: document.getElementsByName('email')[0].value,
@@ -13,4 +14,17 @@ function formToApi(event) {
         body: JSON.stringify(data),
         mode: "no-cors"
     })
+
+    clearForm();
+    hiddenMessage.innerHTML = "Email sent!"
+}
+
+function clearForm(){
+    var contactName = document.getElementById('name');
+    var email = document.getElementById('email');
+    var message = document.getElementById('message');
+
+    contactName.value = "";
+    email.value = "";
+    message.value = "";
 }
