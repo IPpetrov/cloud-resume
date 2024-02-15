@@ -1,7 +1,5 @@
 function formToApi(event) {
-
     event.preventDefault()
-
     var data = {
         email: document.getElementsByName('email')[0].value,
         message: document.getElementsByName('message')[0].value

@@ -21,7 +21,7 @@
         <h3 class="fw-bold text-muted">Ivaylo Petrov</h3>
         <ul class="list-unstyled">
           <li class="text-muted"><i class="fa fa-house text-success"></i>Pravets, Sofia District, Bulgaria</li>
-          <li class="text-muted"><i class="fa fa-envelope text-success"></i>ip_petroefoxv@outlook.com</li>
+          <li class="text-muted"><i class="fa fa-envelope text-success"></i>ip_petrov@outlook.com</li>
           <li><a href="https://www.linkedin.com/in/ip-petrov/" target="_blank"><i class="fa-brands fa-linkedin text-success"></i>LinkedIn</a></li>
           <li><a href="https://github.com/IPpetrov/" target="_blank"><i class="fa-brands fa-github text-success"></i>GitHub</a></li>
         </ul>
@@ -265,17 +265,28 @@
           </div>
         </div>
         <!-- /Experience -->
-        <form>
-          <div>
-              <label>Message:</label>
-              <input type="text" name="message">
-              <br><br>
-              <label>Email:</label>
-              <input name="email">
-              <button onclick="formToApi(event)">Send an Email</button>
-              <div class="g-recaptcha" data-sitekey="6LfkPXQpAAAAAPOKYTyFTq66uIJxYgktscuXqsCX"></div>
-          </div>
-      </form>
+        <!-- Contact form -->
+        <div class="experience shadow p-3 bg-white mt-3">
+          <h3><i class="fa fa-paper-plane text-success"></i><span class="text-muted fw-bold"> Contact me</span></h3>
+          <hr>
+          <form name="contactForm" onsubmit="formToApi(event)">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control mb-2" id="name" name="name" placeholder="Your name" required>
+            <span class="name-error mb-2"></span>
+        
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control mb-2" placeholder="Email address" id="email" name="email" required>
+            <span class="email-error mb-2"></span>
+            
+            <label for="message" class="form-label">Message</label>
+            <textarea placeholder="Your message" class="form-control mb-3" name="message" id="message" required></textarea>
+            <span class="message-error mb-2"></span>
+        
+            <div class="g-recaptcha mb-2" data-sitekey="6LfkPXQpAAAAAPOKYTyFTq66uIJxYgktscuXqsCX"></div>
+            <button type="submit" class="btn btn-success" value="Submit">Submit</button>
+          </form>
+        </div>
+        <!-- /Contact form -->
       </div>
       <!-- /Right Panel -->
     </div>
