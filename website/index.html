@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
     <title>Ivaylo Petrov - Cloud Resume</title>
     <script src="formToApi.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body class="p-3 p-sm-0">
   <div class="container mt-3">
@@ -266,10 +265,10 @@
         </div>
         <!-- /Experience -->
         <!-- Contact form -->
-        <div class="contact shadow p-3 bg-white mt-3">
+        <!-- <div class="contact shadow p-3 bg-white mt-3">
           <h3><i class="fa fa-paper-plane text-success"></i><span class="text-muted fw-bold"> Contact me</span></h3>
           <hr>
-          <form id="form" name="contactForm" onsubmit="formToApi(event)">
+          <form id="form" name="contactForm" action="?" method="POST">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control mb-2" id="name" name="name" placeholder="John Doe" required>
             <span class="name-error mb-2"></span>
@@ -279,22 +278,10 @@
             <label for="message" class="form-label">Message</label>
             <textarea type="text" class="form-control mb-3" placeholder="Hi there.." name="message" id="message" required></textarea>
             <span class="message-error mb-2"></span>
-            <button type="submit" class="btn btn-success mb-2 g-recaptcha"
-              data-sitekey="6Lex7nQpAAAAANdOzEzX87yr59rdMGOVWFUi55nj" 
-              data-callback='onSubmit' 
-              data-action='submit' 
-              value="Submit">
-              Submit
-            </button>
+            <button type="submit" class="btn btn-success g-recaptcha" value="Submit">Submit</button>
             <p class="text-success" id="hiddenMessage"></p>
           </form>
-          <script>
-            function onSubmit(token) {
-              document.getElementById("form").submit();
-            }
-          </script>
-         
-        </div>
+        </div> -->
         <!-- /Contact form -->
       </div>
       <!-- /Right Panel -->
