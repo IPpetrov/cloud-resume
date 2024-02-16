@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <title>Ivaylo Petrov - Cloud Resume</title>
     <script src="formToApi.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script type="text/javascript" src="https://c60ee411d2a0.eu-central-1.captcha-sdk.awswaf.com/c60ee411d2a0/jsapi.js" defer></script>
 </head>
 <body class="p-3 p-sm-0">
   <div class="container mt-3">
@@ -266,7 +266,7 @@
         </div>
         <!-- /Experience -->
         <!-- Contact form -->
-        <div class="experience shadow p-3 bg-white mt-3">
+        <div class="contact shadow p-3 bg-white mt-3">
           <h3><i class="fa fa-paper-plane text-success"></i><span class="text-muted fw-bold"> Contact me</span></h3>
           <hr>
           <form name="contactForm" onsubmit="formToApi(event)">
@@ -279,9 +279,17 @@
             <label for="message" class="form-label">Message</label>
             <textarea type="text" class="form-control mb-3" placeholder="Hi there.." name="message" id="message" required></textarea>
             <span class="message-error mb-2"></span>
+            <div id="captcha-container"></div>
             <button type="submit" class="btn btn-success mb-2" value="Submit">Submit</button>
             <p class="text-success" id="hiddenMessage"></p>
           </form>
+          <!-- captcha tests -->
+          <button id="render-captcha-btn" onClick="onClickRenderCaptcha()">Render Captcha</button>
+          <div id="captcha-container"></div>
+          <button id="fetch-data-btn" style="display: none" onClick="fetchProtectedData()">Fetch data</button>
+          <div id="pets-container"></div>
+          <div id="error-container"></div>
+          
         </div>
         <!-- /Contact form -->
       </div>
