@@ -265,10 +265,10 @@
         </div>
         <!-- /Experience -->
         <!-- Contact form -->
-        <!-- <div class="contact shadow p-3 bg-white mt-3">
+        <div class="contact shadow p-3 bg-white mt-3">
           <h3><i class="fa fa-paper-plane text-success"></i><span class="text-muted fw-bold"> Contact me</span></h3>
           <hr>
-          <form id="form" name="contactForm" action="?" method="POST">
+          <form id="form" name="contactForm">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control mb-2" id="name" name="name" placeholder="John Doe" required>
             <span class="name-error mb-2"></span>
@@ -278,10 +278,10 @@
             <label for="message" class="form-label">Message</label>
             <textarea type="text" class="form-control mb-3" placeholder="Hi there.." name="message" id="message" required></textarea>
             <span class="message-error mb-2"></span>
-            <button type="submit" class="btn btn-success g-recaptcha" value="Submit">Submit</button>
+            <button type="submit" class="btn btn-success" value="Submit" onclick="formToApi(e)">Submit</button>
             <p class="text-success" id="hiddenMessage"></p>
           </form>
-        </div> -->
+        </div>
         <!-- /Contact form -->
       </div>
       <!-- /Right Panel -->
