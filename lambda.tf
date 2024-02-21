@@ -75,8 +75,8 @@ resource "aws_lambda_function" "emailFwd_function" {
 
   environment {
     variables = {
-      SENDER_EMAIL = "ip_petrov@outlook.com"
-      RECEIVER_EMAIL = "ip_petrov@outlook.com"
+      SENDER_EMAIL = var.SENDER_EMAIL
+      RECEIVER_EMAIL = var.RECEIVER_EMAIL
     }
   }
 }

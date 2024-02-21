@@ -18,3 +18,8 @@ variable "root_domain_name" {
   default = "ip-petrov.com"
 }
 
+variable "SENDER_EMAIL" {
+}
+
+variable "RECEIVER_EMAIL" {
+}
