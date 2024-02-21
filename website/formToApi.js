@@ -2,10 +2,14 @@ function formToApi(event) {
     event.preventDefault();
     var hiddenMessage = document.getElementById("hiddenMessage");
     var data = {
-        email: document.getElementsByName('email')[0].value,
-        message: document.getElementsByName('message')[0].value
+        name: document.getElementsById('name').value,
+        email: document.getElementsById('email').value,
+        message: document.getElementsById('message').value
     }
-    fetch( "https://sntf0qp0lk.execute-api.eu-central-1.amazonaws.com/sendStage/sending" , {
+    fetch( "https://4qwmba7004.execute-api.eu-central-1.amazonaws.com/prod/sending" , {
+        dataType: "json",
+        crossDomain: "true",
+        contentType: "application/json; charset=utf-8",
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -26,3 +30,32 @@ function clearForm(){
     email.value = "";
     message.value = "";
 }
+
+
+function invokeAWSAPI(e) {
+    e.preventDefault();           
+    var name = $("#form-name").val();
+    var phone = $("#form-phone").val();
+    var email = $("#form-email").val();
+    var msg = $("#form-message").val();
+    var data = {
+       name : name,
+       phone : phone,
+       email : email,
+       msg : msg
+     };$.ajax({
+      type: "POST",
+      url : "https://*************.us-east-1.amazonaws.com/dev/contact-us",
+      dataType: "json",
+      crossDomain: "true",
+      contentType: "application/json; charset=utf-8",
+      data: JSON.stringify(data),
+      success: function () {
+        alert("Successful");
+        document.getElementById("contact-form").reset();
+    location.reload();
+      },
+      error: function () {
+        alert("unsuccessful");
+      }});
+  }

@@ -9,11 +9,11 @@ def lambda_handler(event, context):
     response = ses.send_email(
     Source = sender,
         Destination = {
-            'ToAddresses': [receiver,]
+            'ToAddresses': [receiver]
         },
         Message={
             'Subject': {
-                'Data': 'Email From: ' + event['email'],
+                'Data': 'Email From: ' + event['name'] + ' - ' + event['email'],
                 'Charset': 'utf-8'
             },
             'Body': {
