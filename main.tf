@@ -32,3 +32,7 @@ resource "aws_iam_role" "existing_lambda_exec" {
     ],
   })
 }
+
+data "aws_iam_role" "emailFwd_role" {
+  name = "lambdaEmailFw"
+}
