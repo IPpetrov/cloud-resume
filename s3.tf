@@ -66,7 +66,7 @@ resource "aws_s3_object" "script_object" {
   source = "website/script.js"
 
   etag = filemd5("website/script.js")
-  content_type = "text/html"
+  content_type = "text/javascript"
   acl = "public-read"
 }
 
@@ -76,7 +76,7 @@ resource "aws_s3_object" "styles_object" {
   source = "website/styles.css"
 
   etag = filemd5("website/styles.css")
-  content_type = "text/html"
+  content_type = "text/css"
   acl = "public-read"
 }
 
