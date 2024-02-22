@@ -56,18 +56,16 @@ resource "aws_api_gateway_integration" "lambda" {
   uri                     = "${aws_lambda_function.emailFwd_function.invoke_arn}"
 }
 
-resource "aws_api_gateway_deployment" "example" {
-  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
-  stage_name  = "prod"
-}
-
 resource "aws_lambda_permission" "apigw" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
   function_name = "${aws_lambda_function.emailFwd_function.function_name}"
   principal     = "apigateway.amazonaws.com"
 
-  # The /*/* portion grants access from any method on any resource
-  # within the API Gateway "REST API".
   source_arn = "${aws_api_gateway_rest_api.example.execution_arn}/*/*"
+}
+
+resource "aws_api_gateway_deployment" "example" {
+  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
+  stage_name  = "prod"
 }

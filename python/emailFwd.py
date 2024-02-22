@@ -28,4 +28,4 @@ def lambda_handler(event, context):
             }
         }
     )
-    return 'Email sent!'
+    return "Email sent!"

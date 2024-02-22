@@ -14,24 +14,8 @@ function formToApi(event) {
         body: JSON.stringify(data),
         mode: "no-cors"
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
-        clearForm();
-        hiddenMessage.innerHTML = "Email sent!";
-    })
-    .catch(error => {
-        console.error('There was a problem with your fetch operation:', error);
-        hiddenMessage.innerHTML = "Something went wrong..";
-        hiddenMessage.classList.replace("text-success", "text-danger")
-    });
-
-    
+    clearForm();
+    hiddenMessage.innerHTML = "Email sent!"
 }
 
 function clearForm(){
