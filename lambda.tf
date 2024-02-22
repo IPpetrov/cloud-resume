@@ -70,7 +70,7 @@ resource "aws_lambda_function" "emailFwd_function" {
   function_name = "emailFwd"
   role          = data.aws_iam_role.emailFwd_role.arn
   handler       = "emailFwd.lambda_handler"
-  runtime = "python3.11"
+  runtime       = "python3.11"
   source_code_hash = data.archive_file.lambda.output_base64sha256
 
   environment {

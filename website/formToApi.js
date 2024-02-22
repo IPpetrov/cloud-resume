@@ -6,7 +6,7 @@ function formToApi(event) {
         email: document.getElementById('email').value,
         message: document.getElementById('message').value
     }
-    fetch("https://0s7g5eahel.execute-api.eu-central-1.amazonaws.com/prod/send", {
+    fetch("https://7dlp8qfml2.execute-api.eu-central-1.amazonaws.com/prod/fwEmail", {
         dataType: "json",
         crossDomain: "true",
         contentType: "application/json; charset=utf-8",

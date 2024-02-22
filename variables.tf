@@ -19,7 +19,9 @@ variable "root_domain_name" {
 }
 
 variable "SENDER_EMAIL" {
+  default = "ip_petrov@outlook.com"
 }
 
 variable "RECEIVER_EMAIL" {
+  default = "ip_petrov@outlook.com"
 }
