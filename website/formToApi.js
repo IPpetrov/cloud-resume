@@ -8,8 +8,6 @@ function formToApi(event) {
     }
     fetch("https://0e9npwdhn8.execute-api.eu-central-1.amazonaws.com/prod/fwEmail", {
         dataType: "json",
-        crossDomain: "true",
-        contentType: "application/json; charset=utf-8",
         method: "POST",
         headers: {
             "Content-Type": "application/json"
