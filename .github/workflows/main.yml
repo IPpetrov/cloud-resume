@@ -11,7 +11,22 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
+    - name: Show Git Commit SHA
+      run: echo "Running on commit ${{ github.sha }}"
+
+    - name: Show Git Status
+      run: git status
+
+    - name: Show Git Log (Last Commit)
+      run: git log -1 --pretty=oneline
+
+    - name: Verify script.js content AFTER checkout
+      run: |
+        echo "--- Displaying content of website/script.js AFTER checkout ---"
+        cat website/script.js || echo "ERROR: website/script.js not found or is empty AFTER checkout"
+        echo "--- End of script.js content AFTER checkout ---"
+
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
