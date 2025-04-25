@@ -19,6 +19,12 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
+  
+    - name: Verify script.js content before sync
+      run: |
+        echo "--- Displaying content of website/script.js before sync ---"
+        cat website/script.js || echo "ERROR: website/script.js not found or is empty"
+        echo "--- End of script.js content ---"
 
     - name: Sync to S3
       run: |
