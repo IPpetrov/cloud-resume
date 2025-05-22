@@ -175,7 +175,10 @@
                 Managed application configuration and secrets securely using environment variables and GCP service bindings.
               </li>
               <li>
-                Maintained source code and Dockerfiles in a GitHub repository for version control and future CI/CD integration.
+                Maintained source code and Dockerfiles in a GitHub repository for version control and to enable CI/CD integration.
+              </li>
+              <li>
+                Implemented CI/CD, on every push made to the repository, the pipeline builds a Docker image, uploads it to Google Artifact Registry, and deploys the new version to Cloud Run.
               </li>
               <li>
                 Developed a web application with Flask to interact with the Jira REST API, allowing users use filters that are not available through Jira JQL.
