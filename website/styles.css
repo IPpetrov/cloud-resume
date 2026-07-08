@@ -182,7 +182,6 @@ main{ max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; position:relati
 .collapsed-group.open{ display:block; }
 .show-more{ margin-top: .6rem; cursor:pointer; }
 .show-more i{ transition: transform .2s ease; }
-.show-more[aria-expanded="true"] i{ transform: rotate(180deg); }
 
 /* CREDENTIALS */
 .cred-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.6rem; margin-top: 1.4rem; }
