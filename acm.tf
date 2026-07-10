@@ -6,17 +6,21 @@ resource "aws_acm_certificate" "ssl_certificate" {
 }
 
 locals {
-  unique_validation_options = {
-    for dvo in aws_acm_certificate.ssl_certificate.domain_validation_options : dvo.resource_record_name => {
+  all_dvos = [
+    for dvo in aws_acm_certificate.ssl_certificate.domain_validation_options : {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
     }
+  ]
+
+  unique_dvos = {
+    for d in distinct(local.all_dvos) : d.name => d
   }
 }
 
 resource "cloudflare_record" "cert_validation" {
-  for_each = local.unique_validation_options
+  for_each = local.unique_dvos
 
   zone_id         = var.cloudflare_zone_id
   name            = each.value.name
