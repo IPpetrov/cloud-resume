@@ -3,55 +3,53 @@ import os
 import json
 
 ses = boto3.client('ses')
-sender = os.environ['SENDER_EMAIL']
-receiver = os.environ['RECEIVER_EMAIL']
+sender = os.environ.get('SENDER_EMAIL')
+receiver = os.environ.get('RECEIVER_EMAIL')
 
 def lambda_handler(event, context):
+    print(f"Received event: {json.dumps(event)}")
+    
     try:
         if 'body' in event:
-            data = json.loads(event['body'])
+            body_data = json.loads(event['body'])
         else:
-            data = event
+            body_data = event
             
-        name = data.get('name', 'No Name')
-        email = data.get('email', 'No Email')
-        message = data.get('message', 'No Message')
-        
-    except Exception as e:
-        print(f"Error parsing JSON: {str(e)}")
-        return create_response(400, "Invalid JSON input")
+        name = body_data.get('name', 'Unknown')
+        email = body_data.get('email', 'No Email')
+        message = body_data.get('message', 'No Message')
 
-    try:
         ses.send_email(
             Source=sender,
             Destination={'ToAddresses': [receiver]},
             Message={
-                'Subject': {
-                    'Data': f"Resume Contact: {name} ({email})",
-                    'Charset': 'utf-8'
-                },
+                'Subject': {'Data': f"Contact Form: {name}", 'Charset': 'utf-8'},
                 'Body': {
                     'Text': {
-                        'Data': f"From: {name}\nEmail: {email}\n\nMessage:\n{message}",
+                        'Data': f"From: {name} ({email})\n\nMessage:\n{message}",
                         'Charset': 'utf-8'
                     }
                 }
             }
         )
-        return create_response(200, "Email sent!")
-        
-    except Exception as e:
-        print(f"SES Error: {str(e)}")
-        return create_response(500, "Failed to send email")
 
-def create_response(status_code, message):
-    """Helper to return proper CORS headers to the browser"""
-    return {
-        'statusCode': status_code,
-        'headers': {
-            'Access-Control-Allow-Origin': 'www.ip-petrov.com',
-            'Access-Control-Allow-Headers': 'Content-Type',
-            'Access-Control-Allow-Methods': 'OPTIONS,POST'
-        },
-        'body': json.dumps(message)
-    }
+        return {
+            'statusCode': 200,
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Methods': 'OPTIONS,POST'
+            },
+            'body': json.dumps("Email sent successfully!")
+        }
+
+    except Exception as e:
+        print(f"ERROR: {str(e)}")
+        return {
+            'statusCode': 500,
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json'
+            },
+            'body': json.dumps({"error": str(e)})
+        }
