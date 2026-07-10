@@ -7,6 +7,10 @@ sender = os.environ.get('SENDER_EMAIL')
 receiver = os.environ.get('RECEIVER_EMAIL')
 
 def lambda_handler(event, context):
+    print(f"DEBUG - SENDER_ENV: {sender}")
+    print(f"DEBUG - RECEIVER_ENV: {receiver}")
+    print(f"DEBUG - RAW_EVENT: {json.dumps(event)}")
+    
     try:
         if isinstance(event.get('body'), str):
             data = json.loads(event['body'])
@@ -17,29 +21,20 @@ def lambda_handler(event, context):
         email = data.get('email', 'No Email')
         message = data.get('message', 'No Message')
 
-        subject = f"Portfolio Message from {name}"
+        print(f"DEBUG - Parsed Data: Name={name}, Email={email}")
 
         ses.send_email(
             Source=sender,
             Destination={'ToAddresses': [receiver]},
             Message={
-                'Subject': {'Data': subject},
+                'Subject': {'Data': f"Contact: {name}"},
                 'Body': {
-                    'Html': {
-                        'Data': f"""
-                        <h3>New Contact Form Submission</h3>
-                        <p><strong>From:</strong> {name} ({email})</p>
-                        <p><strong>Message:</strong></p>
-                        <p style="background-color: #f4f4f4; padding: 10px; border-left: 4px solid #33D17A;">
-                            {message}
-                        </p>
-                        <hr>
-                        <small>Sent via your AWS Cloud Resume API</small>
-                        """
-                    }
+                    'Text': {'Data': f"From: {name} ({email})\n\n{message}"},
+                    'Html': {'Data': f"<h3>New Message</h3><p><strong>From:</strong> {name}</p><p>{message}</p>"}
                 }
             }
         )
+        print("DEBUG - SES Send Call Finished Successfully")
 
         return {
             'statusCode': 200,
