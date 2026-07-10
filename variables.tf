@@ -1,22 +1,27 @@
 variable "region" {
-  type        = string
-  default     = "eu-central-1"
+  default = "eu-central-1"
 }
 
-variable "root_domain_name" {
-  type        = string
-  description = "The root domain name"
+variable "www_bucket_name" {
+  default = "www.ip-petrov.com"
+}
+
+variable "root_bucket_name" {
+  default = "ip-petrov.com"
 }
 
 variable "www_domain_name" {
-  type        = string
-  description = "The www domain name"
+  default = "www.ip-petrov.com"
+}
+
+variable "root_domain_name" {
+  default = "ip-petrov.com"
 }
 
 variable "SENDER_EMAIL" {
-  type        = string
+  type = string
 }
 
 variable "RECEIVER_EMAIL" {
-  type        = string
+  type = string
 }
