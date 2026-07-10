@@ -1,10 +1,13 @@
 async function formToApi(event) {
-    event.preventDefault();
+    if (event) event.preventDefault();
     
-    const btn = event.target.closest('button');
+    const btn = document.getElementById('contactSubmit');
     const hiddenMessage = document.getElementById("hiddenMessage");
     
-    if (!btn) return;
+    if (!btn) {
+        console.error("Button not found in DOM");
+        return;
+    }
 
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
