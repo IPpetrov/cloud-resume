@@ -7,29 +7,24 @@ sender = os.environ.get('SENDER_EMAIL')
 receiver = os.environ.get('RECEIVER_EMAIL')
 
 def lambda_handler(event, context):
-    print(f"Received event: {json.dumps(event)}")
+    print(f"EVENT: {json.dumps(event)}")
     
     try:
-        if 'body' in event:
-            body_data = json.loads(event['body'])
+        if isinstance(event.get('body'), str):
+            data = json.loads(event['body'])
         else:
-            body_data = event
+            data = event
             
-        name = body_data.get('name', 'Unknown')
-        email = body_data.get('email', 'No Email')
-        message = body_data.get('message', 'No Message')
+        name = data.get('name', 'Unknown')
+        email = data.get('email', 'No Email')
+        message = data.get('message', 'No Message')
 
         ses.send_email(
             Source=sender,
             Destination={'ToAddresses': [receiver]},
             Message={
-                'Subject': {'Data': f"Contact Form: {name}", 'Charset': 'utf-8'},
-                'Body': {
-                    'Text': {
-                        'Data': f"From: {name} ({email})\n\nMessage:\n{message}",
-                        'Charset': 'utf-8'
-                    }
-                }
+                'Subject': {'Data': f"Resume Contact: {name}"},
+                'Body': {'Text': {'Data': f"From: {name} ({email})\n\n{message}"}}
             }
         )
 
@@ -37,19 +32,15 @@ def lambda_handler(event, context):
             'statusCode': 200,
             'headers': {
                 'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Content-Type',
-                'Access-Control-Allow-Methods': 'OPTIONS,POST'
+                'Access-Control-Allow-Headers': 'Content-Type'
             },
-            'body': json.dumps("Email sent successfully!")
+            'body': json.dumps("Email sent!")
         }
 
     except Exception as e:
-        print(f"ERROR: {str(e)}")
+        print(f"SES ERROR: {str(e)}")
         return {
             'statusCode': 500,
-            'headers': {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json'
-            },
-            'body': json.dumps({"error": str(e)})
+            'headers': {'Access-Control-Allow-Origin': '*'},
+            'body': json.dumps(f"Error: {str(e)}")
         }

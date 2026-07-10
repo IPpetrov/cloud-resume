@@ -66,6 +66,22 @@ resource "aws_lambda_permission" "apigw" {
 }
 
 resource "aws_api_gateway_deployment" "example" {
-  rest_api_id = "${aws_api_gateway_rest_api.example.id}"
-  stage_name  = "prod"
+  rest_api_id = aws_api_gateway_rest_api.example.id
+  triggers = {
+    redeployment = sha1(jsonencode([
+      aws_api_gateway_resource.proxy.id,
+      aws_api_gateway_method.proxy.id,
+      aws_api_gateway_integration.lambda.id,
+    ]))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_api_gateway_stage" "example" {
+  deployment_id = aws_api_gateway_deployment.example.id
+  rest_api_id   = aws_api_gateway_rest_api.example.id
+  stage_name    = "prod"
 }
