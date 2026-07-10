@@ -17,7 +17,7 @@ async function formToApi(event) {
     }
 
     try {
-        const response = await fetch("https://0e9npwdhn8.execute-api.eu-central-1.amazonaws.com/prod/fwEmail", {
+        const response = await fetch("https://e95954n6sg.execute-api.eu-central-1.amazonaws.com/prod", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
