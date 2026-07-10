@@ -1,8 +1,18 @@
 resource "aws_cloudfront_distribution" "www_s3_distribution" {
   origin {
+    domain_name = "j0mmwoxgh6.execute-api.eu-central-1.amazonaws.com"
+    origin_id   = "API-Gateway"
+    custom_origin_config {
+      http_port              = 80
+      https_port             = 443
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols   = ["TLSv1.2"]
+    }
+  }
+
+  origin {
     domain_name = aws_s3_bucket.my_bucket.website_endpoint
     origin_id   = "S3-${var.www_bucket_name}"
-
     custom_origin_config {
       http_port              = 80
       https_port             = 443
@@ -15,14 +25,33 @@ resource "aws_cloudfront_distribution" "www_s3_distribution" {
   is_ipv6_enabled     = true
   default_root_object = "index.html"
   price_class         = "PriceClass_100"
-
-  aliases = ["${var.www_domain_name}"]
+  aliases             = ["${var.www_domain_name}"]
 
   custom_error_response {
     error_caching_min_ttl = 0
     error_code            = 404
     response_code         = 200
     response_page_path    = "/404.html"
+  }
+
+  ordered_cache_behavior {
+    path_pattern     = "/visitor-count-api"
+    target_origin_id = "API-Gateway"
+    allowed_methods  = ["GET", "HEAD", "OPTIONS", "PUT", "PATCH", "POST", "DELETE"]
+    cached_methods   = ["GET", "HEAD"]
+
+    forwarded_values {
+      query_string = false
+      headers      = ["Origin", "Authorization"]
+      cookies {
+        forward = "none"
+      }
+    }
+
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 0
+    max_ttl                = 0
   }
 
   default_cache_behavior {
