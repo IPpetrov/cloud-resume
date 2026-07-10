@@ -5,6 +5,7 @@ on:
     paths:
       - 'cypress/e2e/**'
       - '**/*.tf'
+      - 'python/**'
 
 jobs:
   test:
