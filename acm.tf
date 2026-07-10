@@ -7,18 +7,19 @@ resource "aws_acm_certificate" "ssl_certificate" {
 
 resource "cloudflare_record" "cert_validation" {
   for_each = {
-    for dvo in aws_acm_certificate.ssl_certificate.domain_validation_options : dvo.domain_name => {
+    for dvo in aws_acm_certificate.ssl_certificate.domain_validation_options : dvo.resource_record_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
     }
   }
 
-  zone_id = var.cloudflare_zone_id
-  name    = each.value.name
-  content = each.value.record
-  type    = each.value.type
-  proxied = false
+  zone_id         = var.cloudflare_zone_id
+  name            = each.value.name
+  content         = each.value.record
+  type            = each.value.type
+  proxied         = false
+  allow_overwrite = true
 }
 
 resource "aws_acm_certificate_validation" "cert_validation" {
