@@ -1,29 +1,41 @@
-function formToApi(event) {
+async function formToApi(event) {
     event.preventDefault();
-    var hiddenMessage = document.getElementById("hiddenMessage");
-    var data = {
+    
+    const btn = event.target.querySelector('button');
+    const hiddenMessage = document.getElementById("hiddenMessage");
+    
+    const data = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
         message: document.getElementById('message').value
+    };
+
+    btn.disabled = true;
+    const originalBtnText = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+
+    try {
+        const response = await fetch("https://0e9npwdhn8.execute-api.eu-central-1.amazonaws.com/prod/fwEmail", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            hiddenMessage.style.color = "#33D17A";
+            hiddenMessage.innerHTML = "Success! I'll get back to you soon.";
+            clearForm();
+        } else {
+            throw new Error('Server error');
+        }
+    } catch (error) {
+        hiddenMessage.style.color = "#ff5f56";
+        hiddenMessage.innerHTML = "Error: Couldn't send message. Please try LinkedIn.";
+        console.error("Mail Error:", error);
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalBtnText;
     }
-    fetch("https://0e9npwdhn8.execute-api.eu-central-1.amazonaws.com/prod/fwEmail", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data),
-        mode: "no-cors"
-    })
-    clearForm();
-    hiddenMessage.innerHTML = "Email sent!"
-}
-
-function clearForm(){
-    var contactName = document.getElementById('name');
-    var email = document.getElementById('email');
-    var message = document.getElementById('message');
-
-    contactName.value = "";
-    email.value = "";
-    message.value = "";
 }
