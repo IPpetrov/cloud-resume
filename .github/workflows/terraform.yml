@@ -38,6 +38,8 @@ jobs:
       TF_VAR_region: ${{ secrets.AWS_REGION }}
       TF_VAR_root_domain_name: "ip-petrov.com"
       TF_VAR_www_domain_name: "www.ip-petrov.com"
+      TF_VAR_cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      TF_VAR_cloudflare_zone_id: ${{ secrets.CLOUDFLARE_ZONE_ID }}
       TF_VAR_SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
       TF_VAR_RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
 
