@@ -1,0 +1,50 @@
+/* Extends styles.css — assumes the same :root design tokens are loaded first. */
+
+.proj-main{ max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+.proj-hero{ padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); }
+.proj-hero h1{ font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0.6rem 0 1rem; }
+.proj-sub{ color: var(--text-muted); max-width: 65ch; margin-bottom: 1.2rem; }
+.proj-sub code{ font-family: var(--font-mono); color: var(--accent); background: var(--panel-2); padding: .1rem .4rem; border-radius: 4px; font-size: .9em; }
+
+.proj-links{ display:flex; gap: 1rem; margin-top: 1.4rem; flex-wrap: wrap; }
+.proj-links a{
+  font-family: var(--font-mono); font-size: .85rem; color: var(--text);
+  border: 1px solid var(--border); border-radius: 999px; padding: .5rem 1.1rem;
+  display:inline-flex; align-items:center; gap:.5rem; background: var(--panel);
+}
+.proj-links a:hover{ border-color: var(--accent); color: var(--accent); text-decoration:none; }
+
+.lede code, .stack-item p code, .proof-list code{
+  font-family: var(--font-mono); color: var(--accent); background: var(--panel-2);
+  padding: .1rem .4rem; border-radius: 4px; font-size: .88em;
+}
+
+.terminal.small .term-body{ font-size: .82rem; }
+.terminal.small .term-body p{ margin-bottom: .45rem; }
+.terminal.small .prompt{ color: var(--accent); margin-right: .5rem; font-weight: 600; }
+
+.stack-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1rem; margin-top: 1.4rem; }
+.stack-item{ background: var(--panel); border:1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.2rem; }
+.stack-item h3{ color: var(--accent); margin-bottom: .5rem; }
+.stack-item p{ color: var(--text-muted); font-size: .92rem; margin: 0; }
+
+.proof-list{ margin: 1rem 0 0; padding-left: 1.2rem; color: var(--text-muted); }
+.proof-list li{ margin-bottom: .7rem; line-height: 1.55; }
+.proof-list li strong{ color: var(--text); }
+
+.shot{ margin: 1.4rem 0; }
+.shot img{
+  width: 100%; border-radius: var(--radius); border: 1px solid var(--border);
+  display: block;
+}
+.shot figcaption{
+  font-family: var(--font-mono); font-size: .78rem; color: var(--text-muted);
+  margin-top: .6rem; text-align: center;
+}
+
+.panel.incident{
+  border-left: 3px solid var(--amber);
+  padding-left: 1.5rem;
+}
+.panel.incident .eyebrow{ color: var(--amber); }

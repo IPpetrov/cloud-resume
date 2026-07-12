@@ -179,6 +179,28 @@
         </div>
       </article>
 
+      <article class="project-card">
+        <div class="project-top">
+          <h3>GitOps Pipeline for CI Dashboard</h3>
+          <span class="status-badge deployed"><span class="pulse"></span>documented</span>
+        </div>
+        <p>A local Kubernetes deployment path for the CI/CD Dashboard, built from zero - kind, Helm, ArgoCD, and Prometheus/Grafana, wired into a real GitOps loop. Includes a full write-up, incident and all.</p>
+        <div class="tags small">
+          <span class="tag">Kubernetes</span><span class="tag">Helm</span><span class="tag">ArgoCD</span>
+          <span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">GitHub Actions</span>
+          <span class="tag">AWS ECR</span>
+        </div>
+        <ul>
+          <li>Git-triggered pipeline: push > build > ECR > chart update > auto-sync to cluster.</li>
+          <li>Self-healing verified live - both manual drift correction and Git-driven rollout.</li>
+          <li>Full observability stack, infra and app-level metrics.</li>
+        </ul>
+        <div class="project-links">
+          <a href="project-ci-dashboard-gitops.html" class="btn-line"><i class="fa-solid fa-arrow-up-right-from-square"></i> read write-up</a>
+          <a href="https://github.com/IPpetrov/ci-dashboard-k8s" target="_blank" rel="noopener" class="btn-line"><i class="fa-brands fa-github"></i> source</a>
+        </div>
+      </article>
+
     </div>
   </section>
 

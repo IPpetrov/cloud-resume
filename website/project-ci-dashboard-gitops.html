@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CI Dashboard: Local GitOps Pipeline - Ivaylo Petrov</title>
+<meta name="description" content="Building a local Kubernetes GitOps pipeline from zero - kind, Helm, ArgoCD, Prometheus, Grafana - including a real incident and how it was caught and fixed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="project.css">
+</head>
+<body>
+
+<div class="scanline" aria-hidden="true"></div>
+
+<nav class="topnav">
+  <a href="index.html" class="brand"><span class="dot"></span>ip.petrov</a>
+  <div class="navlinks">
+    <a href="index.html#projects">back to projects</a>
+  </div>
+</nav>
+
+<main class="proj-main">
+
+  <header class="proj-hero">
+    <p class="eyebrow">write-up</p>
+    <h1>Building a local GitOps pipeline from zero Kubernetes knowledge</h1>
+    <p class="proj-sub">
+      kind > Helm > ArgoCD > Prometheus/Grafana, wrapped around an existing
+      Flask side project. Includes the part where a bad <code>git push</code>
+      briefly broke a live Lambda function.
+    </p>
+    <div class="tags">
+      <span class="tag">Kubernetes</span><span class="tag">Helm</span>
+      <span class="tag">ArgoCD</span><span class="tag">GitOps</span>
+      <span class="tag">Prometheus</span><span class="tag">Grafana</span>
+      <span class="tag">GitHub Actions</span><span class="tag">AWS ECR</span>
+    </div>
+    <div class="proj-links">
+      <a href="https://github.com/IPpetrov/ci-dashboard-k8s" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> app repo</a>
+      <a href="https://github.com/IPpetrov/ci-dashboard-chart" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> chart repo</a>
+    </div>
+  </header>
+
+  <section class="panel">
+    <p class="eyebrow">why</p>
+    <p class="lede">
+      I already had a small Flask dashboard (aggregates GitHub Actions status
+      across a couple of repos) running serverlessly on Lambda. Rather than
+      touch a working deployment, I built a second, Kubernetes-based path for
+      the same app as a learning project - the goal was a real local GitOps
+      loop, not a tutorial copy-paste.
+    </p>
+  </section>
+
+  <section class="panel">
+    <p class="eyebrow">the pipeline</p>
+    <h2>What actually happens on a deploy</h2>
+    <div class="terminal small">
+      <div class="term-bar">
+        <span class="term-dot red"></span>
+        <span class="term-dot yellow"></span>
+        <span class="term-dot green"></span>
+        <span class="term-title">pipeline.txt</span>
+      </div>
+      <div class="term-body">
+        <p>git push <span class="accent">ci-dashboard-k8s</span></p>
+        <p class="out">> GitHub Actions: test, build image, push to private ECR</p>
+        <p class="out">> checkout ci-dashboard-chart, bump values.yaml image.tag to commit SHA, commit, push</p>
+        <p class="out">> ArgoCD polls the chart repo, detects the change, runs Helm</p>
+        <p class="out">> new pods roll out; old pods retired only once new ones are healthy</p>
+        <p class="out">> Prometheus scrapes /metrics via a ServiceMonitor; Grafana visualizes it</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <p class="eyebrow">stack</p>
+    <h2>Why each piece</h2>
+    <div class="stack-grid">
+      <div class="stack-item">
+        <h3>kind</h3>
+        <p>A real Kubernetes cluster running as Docker containers, for local
+        dev. <code>kubectl</code> is just the client - <code>kind</code>
+        is what actually builds the cluster it talks to.</p>
+      </div>
+      <div class="stack-item">
+        <h3>Helm</h3>
+        <p>Templated the Deployment/Service so environment-specific values
+        (image tag, replicas, ports) live in one <code>values.yaml</code>
+        instead of hand-copied YAML files - same problem I'd already solved
+        once at work with a Jenkins shared library, just for manifests.</p>
+      </div>
+      <div class="stack-item">
+        <h3>ArgoCD</h3>
+        <p>The actual GitOps part. A controller inside the cluster watches
+        Git and reconciles the cluster to match it, instead of me running
+        <code>helm upgrade</code> by hand.</p>
+      </div>
+      <div class="stack-item">
+        <h3>Prometheus + Grafana</h3>
+        <p>Infra metrics (CPU/memory per pod) came free with zero app
+        changes. App metrics needed instrumenting Flask with
+        <code>prometheus-flask-exporter</code> and a <code>ServiceMonitor</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <p class="eyebrow">proof</p>
+    <h2>Self-healing, verified live</h2>
+    <p class="lede small">Two tests, not just a demo claim:</p>
+    <ul class="proof-list">
+      <li><strong>Manual drift:</strong> scaled the deployment down by hand with <code>kubectl scale</code> - ArgoCD reverted it within seconds (<code>selfHeal: true</code>).</li>
+      <li><strong>Git as source of truth:</strong> changed <code>replicaCount</code> in <code>values.yaml</code>, committed, pushed - zero <code>kubectl</code>/<code>helm</code> commands run - new pod appeared within ArgoCD's ~3 min poll interval.</li>
+    </ul>
+  </section>
+
+  <section class="panel">
+    <p class="eyebrow">observability</p>
+    <h2>Metrics that actually mean something</h2>
+    <p class="lede small">
+      Infra dashboards came bundled with <code>kube-prometheus-stack</code> -
+      real per-pod CPU/memory, zero app changes:
+    </p>
+    <figure class="shot">
+      <img src="assets/ci-dashboard-gitops/grafana-dashboard.png" alt="Grafana dashboard showing live CPU and memory usage for the ci-dashboard pods">
+      <figcaption>Kubernetes / Compute Resources / Namespace (Pods) - live, real pod names.</figcaption>
+    </figure>
+    <p class="lede small">
+      App-level metrics needed real instrumentation - <code>prometheus-flask-exporter</code>
+      exposing <code>/metrics</code>, and a <code>ServiceMonitor</code> so
+      Prometheus actually discovers it:
+    </p>
+    <figure class="shot">
+      <img src="assets/ci-dashboard-gitops/prometheus-targets.png" alt="Prometheus targets page showing all four app pods as UP and being scraped">
+      <figcaption>All 4 replicas discovered and scraped independently - no manual target list.</figcaption>
+    </figure>
+  </section>
+
+  <section class="panel incident">
+    <p class="eyebrow">the incident</p>
+    <h2>Ten minutes of broken production</h2>
+    <p class="lede">
+      Splitting the Kubernetes version into its own repo went wrong in an
+      avoidable way: the local folder I ran <code>git init</code> in was
+      already a clone with <code>origin</code> pointed at the
+      <strong>original Lambda repo</strong>. I renamed a branch, pushed, and
+      the gunicorn-based code - which has no <code>lambda_handler</code> -
+      landed straight on that repo's <code>main</code>, which has a working
+      GitHub Actions workflow that deploys to Lambda on every push.
+    </p>
+    <div class="terminal small">
+      <div class="term-bar">
+        <span class="term-dot red"></span>
+        <span class="term-dot yellow"></span>
+        <span class="term-dot green"></span>
+        <span class="term-title">incident timeline</span>
+      </div>
+      <div class="term-body">
+        <p><span class="prompt">1.</span> Bad push lands on the Lambda repo's <span class="accent">main</span></p>
+        <p><span class="prompt">2.</span> Deploy workflow fires, updates the live Lambda function</p>
+        <p><span class="prompt">3.</span> Workflow's own health-check step fails: <span class="accent">curl > 503</span></p>
+        <p><span class="prompt">4.</span> Caught within minutes via the failing CI step, not a user report</p>
+        <p><span class="prompt">5.</span> <code>git revert</code>, re-deployed, confirmed via the same health check</p>
+      </div>
+    </div>
+    <p class="lede">
+      Root cause: never ran <code>git remote -v</code> before assuming a
+      folder was a fresh, unconnected repo. That's now a checked step before
+      any first push, permanently.
+    </p>
+  </section>
+
+  <section class="panel">
+    <p class="eyebrow">gotcha</p>
+    <h2>Private registries don't work the way you'd hope</h2>
+    <p class="lede">
+      Everything worked fine right up until the pipeline pushed to a
+      <strong>private</strong> ECR repo instead of loading images straight
+      into kind's local store. Kubernetes needs an explicit
+      <code>imagePullSecret</code> to authenticate - and that secret is
+      built from a short-lived AWS token (~12h), not a permanent credential.
+      Rather than refresh it by hand forever, I wrote a small in-cluster
+      CronJob with its own minimal-permission IAM user to refresh it every
+      6 hours - a good excuse to actually learn Kubernetes RBAC
+      (ServiceAccount + Role + RoleBinding) instead of copy-pasting a secret
+      command.
+    </p>
+  </section>
+
+  <section class="panel">
+    <p class="eyebrow">takeaways</p>
+    <h2>What I'd tell someone starting the same thing</h2>
+    <ul class="proof-list">
+      <li><code>kubectl describe pod</code> and <code>kubectl logs</code> before anything else - nearly every failure here was explainable from one of those two.</li>
+      <li>Test the container locally with plain <code>docker run</code> before it touches Kubernetes at all. Every image-level bug is faster to catch there than through a full CI > ECR > ArgoCD round trip.</li>
+      <li><code>helm template</code> before <code>helm install</code>/<code>upgrade</code> - a free dry-run that catches YAML indentation mistakes before they hit a real cluster.</li>
+      <li>Check <code>git remote -v</code> before the first push in any "new" local repo. Obvious in hindsight.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p class="fine">Ivaylo Petrov - Sofia, Bulgaria</p>
+</footer>
+
+</body>
+</html>

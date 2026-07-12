@@ -227,3 +227,4 @@ input:focus, textarea:focus{ outline:none; border-color: var(--accent); }
   .cursor, .pulse{ animation: none; }
   html{ scroll-behavior:auto; }
 }
+
